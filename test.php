@@ -15,6 +15,13 @@ if (!file_exists($url)) {
 $text = file_get_contents($url);
 $data = json_decode($text, true);
 
+if (!array_key_exists('quest', $data))
+{
+  echo "<center><h1>Такого теста нет</h1>";
+  echo "<h3>(<a href='list.php'>вернуться к списку тестов</a>)</h3></center>";
+  exit;
+}
+
 $question = $data['quest'];
 $answ = $data['answ'];
 $right = $data['right'];
